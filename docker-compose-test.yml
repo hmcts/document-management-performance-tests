@@ -1,0 +1,20 @@
+---
+version: '2.1'
+
+services:
+  performance-test:
+    build:
+      context: .
+#    image: docker.artifactory.reform.hmcts.net/evidence/performance-tests:latest
+    environment:
+      - EM_BASE_URI=http://em-api-gateway-web:8080
+      - IDAM_USER_BASE_URI=http://idam-api:8080
+      - IDAM_BASE_URI=http://service-auth-provider-api:8080
+    links:
+      - em-api-gateway-web
+      - idam-api
+      - service-auth-provider-api
+    depends_on:
+      - em-api-gateway-web
+      - idam-api
+      - service-auth-provider-api
