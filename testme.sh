@@ -14,7 +14,7 @@ docker-compose -f docker-compose.yml -f docker-compose-test.yml pull
 docker-compose -f docker-compose.yml -f docker-compose-test.yml build
 docker-compose up -d --build
 #wget --retry-connrefused --tries=120 --waitretry=1 -O /dev/null http://localhost:8080/health
-echo "Waiting 30s for the docker to warm up" && sleep 30s
+echo "Waiting 60s for the docker to warm up" && sleep 60s
 ./idam.sh
 ./gradlew gatlingRun -DdmApiGw=http://localhost:8080 -DidamUser=http://localhost:8081 -DidamS2S=http://localhost:8082
 #mvn clean scala:testCompile gatling:execute -DdmApiGw=$EM_BASE_URI -DidamUser=$IDAM_USER_BASE_URI -DidamS2S=$IDAM_S2S_BASE_URI
