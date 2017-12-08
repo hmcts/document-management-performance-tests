@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'uk.gov.hmcts.dm.pt'
+version = '1.0.0'
+
+description = """"""
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "http://dl.bintray.com/gov-uk-notify/maven" }
+     maven { url "https://repo1.maven.org/maven2" }
+     maven { url "http://artifactory.reform.hmcts.net/artifactory/libs-snapshot" }
+     maven { url "http://artifactory.reform.hmcts.net/artifactory/libs-release" }
+}
+dependencies {
+    testCompile group: 'io.gatling.highcharts', name: 'gatling-charts-highcharts', version:'2.3.0'
+    testCompile group: 'io.gatling', name: 'gatling-core', version:'2.3.0'
+    testCompile group: 'io.gatling', name: 'gatling-http', version:'2.3.0'
+    testCompile group: 'io.gatling', name: 'gatling-maven-plugin', version:'2.2.4'
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version:'LATEST'
+    testCompile group: 'io.rest-assured', name: 'json-path', version:'LATEST'
+}
