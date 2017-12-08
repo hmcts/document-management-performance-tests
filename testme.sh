@@ -10,12 +10,12 @@ docker-compose up -d --build
 
 echo "Waiting 60s for the docker to warm up" && sleep 60s
 ./idam.sh
-./gradlew gatlingRun
+./gradlew clean gatlingRun
 #docker-compose -f docker-compose.yml -f docker-compose-test.yml run performance-test
 
-sensible-browser target/gatling/results/*/index.html
-xdg-open target/gatling/results/*/index.html
-open target/gatling/results/*/index.html
+sensible-browser build/reports/gatling/*/index.html
+xdg-open build/reports/gatling/*/index.html
+open build/reports/gatling/*/index.html
 
 docker-compose down
 
