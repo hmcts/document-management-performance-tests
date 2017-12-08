@@ -18,7 +18,7 @@ node {
         }
 
         stage('Build') {
-            sh 'mvn scala:testCompile'
+            sh './gradlew clean gatlingClasses'
         }
 
         if ('master' == "${env.BRANCH_NAME}") {
