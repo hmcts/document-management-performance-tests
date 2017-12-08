@@ -179,3 +179,7 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # End of https://www.gitignore.io/api/java,macos,linux,maven,gradle,windows,intellij+all
+!/src/gatling/resources/bodies/5MB.msi
+!/src/gatling/resources/bodies/10MB.msi
+!/src/gatling/resources/bodies/21MB.jar
+

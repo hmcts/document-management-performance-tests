@@ -9,6 +9,7 @@ import uk.gov.hmcts.dm.pt.util.idamTokenGenerator
 
 import scala.collection.mutable
 import scala.util.Random
+
 object PostRequest {
 
   val ids: mutable.MutableList[String] = mutable.MutableList[String]()
