@@ -15,12 +15,14 @@ properties([
 
 String channel = '#dm-pipeline'
 
+def branchName = ('master' == "${env.BRANCH_NAME}") ? "${env.BRANCH_NAME}" : "${env.CHANGE_BRANCH}"
+
 node {
     try{
 
         stage('Checkout') {
             deleteDir()
-            sh "echo ${env.BRANCH}"
+            echo sh(returnStdout: true, script: 'env')
             checkout scm
         }
 
