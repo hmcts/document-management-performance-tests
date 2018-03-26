@@ -22,11 +22,19 @@ class PostRequestSimulation extends Simulation {
 
   val testScenarios = List(postAndGetInSeq.inject(rampUsers(18) over (50 minutes)))
 
-  val testScenarioForPostRecords = List(PostRequest.postRequestScenario.inject(atOnceUsers(1),rampUsers(38) over (2 minute)))
+//  val randomTestScenarios = List(randomPostRequest.inject(splitUsers(150) into (rampUsers(10) over (10 seconds)) separatedBy atOnceUsers(4)), //atOnceUser(40)//rampUsers(4) over (2 minutes)),splitUsers(40) into (rampUsers(5) over (10 seconds)) separatedBy (10 seconds)
+//      randomGetRequest.inject( nothingFor(5 seconds), splitUsers(100) into (rampUsers(10) over (10 seconds)) separatedBy atOnceUsers(4)))//nothingFor(5 seconds), atOnceUsers(40)))//rampUsers(4) over (2 minutes))   )
+
+    val randomTestScenarios = List(randomPostRequest.inject(splitUsers(150) into (rampUsers(12) over (10 seconds)) separatedBy atOnceUsers(4)), //atOnceUser(40)//rampUsers(4) over (2 minutes)),splitUsers(40) into (rampUsers(5) over (10 seconds)) separatedBy (10 seconds)
+        randomGetRequest.inject( nothingFor(5 seconds), splitUsers(150) into (rampUsers(12) over (10 seconds)) separatedBy atOnceUsers(4)))//nothingFor(5 seconds), atOnceUsers(40)))//rampUsers(4) over (2 minutes))   )
+
+
+    val testScenarioForPostRecords = List(PostRequest.postRequestScenario.inject(atOnceUsers(1),rampUsers(38) over (2 minute)))
 
   val postRequests2000 = List(PostRequest.postRequestScenario.inject(atOnceUsers(1), rampUsersPerSec(1) to 200 during (1 minute)))
 
-  setUp(testScenarios)
+//  setUp(testScenarios)
+   setUp(randomTestScenarios)
     .protocols(httpConf)
     .maxDuration(50 minutes)
     .assertions(

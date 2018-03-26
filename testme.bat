@@ -13,12 +13,15 @@ timeout 150
 curl -s -H "Content-Type: application/json" -d "{ \"email\":\"test@TEST.COM\", \"forename\":\"test@TEST.COM\",\"surname\":\"test@TEST.COM\",\"password\":\"123\"}" http://localhost:8081/testing-support/accounts
 curl -s -X POST -H "Authorization: Basic dGVzdEBURVNULkNPTToxMjM=" http://localhost:8081/oauth2/authorize
 
-curl --retry-connrefused --retry-delay 100 --retry 2 ${DM_STORE_BASE_URI}/health
+echo "curl --retry-connrefused --retry-delay 100 --retry 2 ${DM_STORE_BASE_URI}/health"
+curl --retry-connrefused --retry-delay 100 --retry 2 http://localhost:8083/health
 
-call "idam.bat"
-call "gradlew.bat" clean gatlingRun
-REM call "gradlew.bat" clean gatlingRun
-#docker-compose -f docker-compose.yml -f docker-compose-test.yml run performance-test
+echo "call "idam.bat""
+echo "call "gradlew.bat" clean gatlingRun"
+idam.bat
+gradlew.bat clean gatlingRun
+
+echo "#docker-compose -f docker-compose.yml -f docker-compose-test.yml run performance-test"
 
 start build/reports/gatling/*/index.html
 
