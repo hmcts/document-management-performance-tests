@@ -25,8 +25,8 @@ class PostRequestSimulation extends Simulation {
 //  val randomTestScenarios = List(randomPostRequest.inject(splitUsers(150) into (rampUsers(10) over (10 seconds)) separatedBy atOnceUsers(4)), //atOnceUser(40)//rampUsers(4) over (2 minutes)),splitUsers(40) into (rampUsers(5) over (10 seconds)) separatedBy (10 seconds)
 //      randomGetRequest.inject( nothingFor(5 seconds), splitUsers(100) into (rampUsers(10) over (10 seconds)) separatedBy atOnceUsers(4)))//nothingFor(5 seconds), atOnceUsers(40)))//rampUsers(4) over (2 minutes))   )
 
-    val randomTestScenarios = List(randomPostRequest.inject(splitUsers(300) into (rampUsers(32) over (10 seconds)) separatedBy atOnceUsers(7)), //atOnceUser(40)//rampUsers(4) over (2 minutes)),splitUsers(40) into (rampUsers(5) over (10 seconds)) separatedBy (10 seconds)
-        randomGetRequest.inject( nothingFor(2 seconds), splitUsers(300) into (rampUsers(32) over (9 seconds)) separatedBy atOnceUsers(7)))//nothingFor(5 seconds), atOnceUsers(40)))//rampUsers(4) over (2 minutes))   )
+    val randomTestScenarios = List(randomPostRequest.inject(splitUsers(100) into (rampUsers(25) over (10 seconds)) separatedBy atOnceUsers(7)), //atOnceUser(40)//rampUsers(4) over (2 minutes)),splitUsers(40) into (rampUsers(5) over (10 seconds)) separatedBy (10 seconds)
+        randomGetRequest.inject( nothingFor(2 seconds), splitUsers(100) into (rampUsers(25) over (9 seconds)) separatedBy atOnceUsers(7)))//nothingFor(5 seconds), atOnceUsers(40)))//rampUsers(4) over (2 minutes))   )
 
 
     val testScenarioForPostRecords = List(PostRequest.postRequestScenario.inject(atOnceUsers(1),rampUsers(38) over (2 minute)))
